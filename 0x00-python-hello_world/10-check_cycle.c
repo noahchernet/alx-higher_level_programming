@@ -15,14 +15,15 @@ int check_cycle(listint_t *list)
 	{
 		j = 0;
 		temp = list;
-		while(j < i)
+		while (j < i)
 		{
-			if (copy == temp) return 1;
+			if (copy == temp)
+				return (1);
 			temp = temp->next;
 			j++;
 		}
 		copy = copy->next;
 	}
 
-	return 0;
+	return (0);
 }
