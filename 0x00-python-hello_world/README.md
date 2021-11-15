@@ -1,0 +1,1 @@
+This folder contains basic Python and Shell scripts with some C programs.
