@@ -1,3 +1,6 @@
 #!/usr/bin/python3
 
-print("abcdefghijklmnopqrstuvwxyz", end="")
+i = 97
+while i < 123:
+    print(chr(i), end="")
+    i += 1
