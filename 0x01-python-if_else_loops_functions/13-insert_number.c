@@ -63,7 +63,10 @@ listint_t *insert_node(listint_t **head, int number)
 		}
 		else if ((*head)->n == number)
 		{
-			*head = new_node;
+			next = (*head)->next;
+			(*head)->next = new_node;
+			new_node->next = next;
+			*head = head_copy;
 			return (new_node);
 		}
 	}

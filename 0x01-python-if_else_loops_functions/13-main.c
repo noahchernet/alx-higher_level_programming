@@ -31,6 +31,8 @@ int main(void)
 	insert_node(&head, 2010);
 	insert_node(&head, -33);
 	insert_node(&head, 9);
+	insert_node(&head, 9);
+
 
 	print_listint(head);
 
