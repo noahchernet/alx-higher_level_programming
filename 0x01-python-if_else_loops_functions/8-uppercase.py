@@ -3,7 +3,7 @@
 
 def uppercase(str):
     if str == "":
-        print("{}".format(""), end="")
+        print("{}".format("\n"), end="")
         return
 
     for i in range(0, len(str)):
