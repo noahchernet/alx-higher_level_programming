@@ -2,11 +2,10 @@
 
 
 def uppercase(str):
-    n = ''
     to_print = ""
     for i in range(0, len(str)):
         if 97 <= ord(str[i]) <= 122:
             to_print += chr(ord(str[i]) - 32)
         else:
-            to_print += str[i] + n
-    print("{}".format(to_print))
+            to_print += str[i]
+    print("{:s}".format(to_print))
