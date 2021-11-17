@@ -6,4 +6,4 @@ for i in range(0, 100):
     else:
         if i < 10:
             print("0", end="")
-        print(str(i) + ", ", end="")
+        print("{}, ".format(str(i)), end="")
