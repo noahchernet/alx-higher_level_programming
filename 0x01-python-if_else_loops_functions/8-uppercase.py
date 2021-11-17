@@ -2,12 +2,8 @@
 
 
 def uppercase(str):
-    if str == "":
-        print("{}".format("\n"), end="")
-        return
-
     for i in range(0, len(str)):
-        # c is the character to be printed
-        c = chr(ord(str[i]) - 32) if 97 <= ord(str[i]) <= 122 else str[i]
-        newline_placeholder = '\n' if i == len(str) - 1 else ''
-        print("{}{}".format(c, newline_placeholder), end="")
+        n = '\n' if i == len(str) - 1 else ''
+        print("{}{}".format(chr(ord(str[i]) - 32), n)
+              if 97 <= ord(str[i]) <= 122 else "{}{}".format(str[i], n),
+              end="")
