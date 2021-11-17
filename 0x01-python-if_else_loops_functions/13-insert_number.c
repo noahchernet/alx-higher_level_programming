@@ -34,8 +34,8 @@ listint_t *insert_node(listint_t **head, int number)
 	{
 		if (((*head)->n < number))
 		{
-			// Add a new node between *head and (*head)-> next if (*head)
-			// ->next exists
+			/* Add a new node between *head and (*head)-> next if (*head)
+			 ->next exists */
 			if ((*head)->next && ((*head)->next)->n > number)
 			{
 				next = (*head)->next;
@@ -43,18 +43,18 @@ listint_t *insert_node(listint_t **head, int number)
 				new_node->next = next;
 				node_inserted = 1;
 			}
-			// Add a new node at the end of the list
+			/* Add a new node at the end of the list */
 			else if (!(*head)->next)
 			{
 				(*head)->next = new_node;
 				node_inserted = 1;
 			}
-			// If no new node is added, set *head to the next item in the list
+			/* If no new node is added, set *head to the next item in the list*/
 			else
 				*head = (*head)->next;
 		}
-		// If number is less than (*head)->n, add new_node at the top of the
-		// list
+		/* If number is less than (*head)->n, add new_node at the top of the
+		list */
 		else if (*head == head_copy)
 		{
 			*head = new_node;
