@@ -12,7 +12,10 @@ int is_palindrome(listint_t **head)
 	listint_t *head_copy = *head;
 
 	if (!*head || ((*head)->n == 0 && (*head)->next == NULL))
+	{
+		free(h);
 		return (1);
+	}
 
 	for (i = 0; i < list_len; i++)
 	{
