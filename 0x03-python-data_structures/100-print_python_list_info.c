@@ -16,15 +16,15 @@ void print_python_list_info(PyObject *p)
 
 	for(i = 0; i < (int) PyList_Size(p); i++)
 	{
-		if (PyLong_Check(p))
+		if (PyLong_Check(PyList_GetItem(p, i)))
 			printf("Element %d: int\n", i);
-		else if (PyFloat_Check(p))
+		else if (PyFloat_Check(PyList_GetItem(p, i)))
 			printf("Element %d: float\n", i);
-		else if (PyUnicode_Check(p))
+		else if (PyUnicode_Check(PyList_GetItem(p, i)))
 			printf("Element %d: str\n", i);
-		else if (PyList_Check(p))
+		else if (PyList_Check(PyList_GetItem(p, i)))
 			printf("Element %d: list\n", i);
-		else if (PyTuple_Check(p))
+		else if (PyTuple_Check(PyList_GetItem(p, i)))
 			printf("Element %d: tuple\n", i);
 	}
 }
