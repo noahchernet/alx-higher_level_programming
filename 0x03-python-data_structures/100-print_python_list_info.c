@@ -26,6 +26,5 @@ void print_python_list_info(PyObject *p)
 			printf("Element %d: list\n", i);
 		else if (PyTuple_Check(p))
 			printf("Element %d: tuple\n", i);
-		else if ()
 	}
 }
