@@ -20,7 +20,7 @@ void print_python_list_info(PyObject *p)
 			printf("Element %d: int\n", i);
 		else if (PyFloat_Check(p))
 			printf("Element %d: float\n", i);
-		else if (PyString_Check(p))
+		else if (PyUnicode_Check(p))
 			printf("Element %d: str\n", i);
 		else if (PyList_Check(p))
 			printf("Element %d: list\n", i);
