@@ -3,7 +3,6 @@
 
 def print_list_integer(my_list=[]):
     if my_list == [] or my_list is None:
-        print()
         return
     for i in my_list:
         print("{:d}".format(i))
