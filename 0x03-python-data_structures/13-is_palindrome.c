@@ -8,8 +8,14 @@
 int is_palindrome(listint_t **head)
 {
 	int i, list_len = (int) listint_len(*head);
-	int h[list_len];
+	int *h = malloc(sizeof(int) * list_len); /* Contains all n's in *head*/
 	listint_t *head_copy = *head;
+
+	if (!*head || ((*head)->n == 0 && (*head)->next == NULL))
+	{
+		free(h);
+		return (1);
+	}
 
 	for (i = 0; i < list_len; i++)
 	{
@@ -22,9 +28,11 @@ int is_palindrome(listint_t **head)
 	{
 		if (h[i] == h[list_len - 1 - i])
 			continue;
+		free(h);
 		return (0);
 	}
 
+	free(h);
 	return (1);
 }
 
