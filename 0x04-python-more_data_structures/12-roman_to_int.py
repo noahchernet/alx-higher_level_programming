@@ -11,6 +11,11 @@ def roman_to_int(roman_string):
     i = 0
     while i < len(roman_string):
         if i + 1 < len(roman_string) and roman_string[i] + roman_string[i + 1]\
+                == "MCM":
+            summation += 1900
+            i += 3
+            continue
+        if i + 1 < len(roman_string) and roman_string[i] + roman_string[i + 1]\
                 == "IV":
             summation += 4
             i += 2
