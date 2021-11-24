@@ -6,25 +6,16 @@ def roman_to_int(roman_string):
             roman_string == "":
         return 0
     symbols = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
-    summation = 0
+    sum_ = 0
 
     i = 0
     while i < len(roman_string):
-        if i + 2 < len(roman_string) and roman_string[i] + roman_string[i + 1]\
-                + roman_string[i + 1] == "MCM":
-            summation += 1900
-            i += 3
-            continue
-        if i + 1 < len(roman_string) and roman_string[i] + roman_string[i + 1]\
-                == "IV":
-            summation += 4
+        #  If the next two letters are for instance "IX", return "X" - "I"
+        if i + 1 < len(roman_string) and\
+                symbols[roman_string[i]] < symbols[roman_string[i + 1]]:
+            sum_ += symbols[roman_string[i + 1]] - symbols[roman_string[i]]
             i += 2
             continue
-        if i + 1 < len(roman_string) and roman_string[i] + roman_string[i + 1]\
-                == "IX":
-            summation += 9
-            i += 2
-            continue
-        summation += symbols[roman_string[i].upper()]
+        sum_ += symbols[roman_string[i].upper()]
         i += 1
-    return summation
+    return sum_
