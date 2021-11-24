@@ -17,4 +17,3 @@ def best_score(a_dictionary):
             highest_score_index = i
 
     return list(a_dictionary.keys())[highest_score_index]
-
