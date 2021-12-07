@@ -17,4 +17,4 @@ class Square:
             size (int): the size of the square of this class set
             by the initializer.
         """
-        self._size = size
+        self.__size = size
