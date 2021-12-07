@@ -35,9 +35,13 @@ class Square:
         return self.__size ** 2
 
     def my_print(self):
-        """Prints a visual representation of the square"""
-        if self.size == 0:
-            print()
+        """Prints a visual representation of the square
+
+        Print #'s according to the length of the side of the square,
+        self.__size
+
+        """
+        print() if self.size == 0 else None
         for x in range(self.size):
             for y in range(self.size):
                 print("#", end="")
