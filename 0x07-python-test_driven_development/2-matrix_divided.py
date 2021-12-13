@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 
 """2-matrix_divided
-Holds the function add_integer(a, b) and used to test the function using
-tests/0-add_integer.txt
+Holds the function matrix_divided and used to test the function using
+tests/2-matrix_divided.txt
 """
 
 
