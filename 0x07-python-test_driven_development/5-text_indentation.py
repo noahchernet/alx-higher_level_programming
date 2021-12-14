@@ -17,50 +17,39 @@ def text_indentation(text):
     """
     if type(text) is not str:
         raise TypeError("text must be a string")
-    ft = []  # Formatted text goes here, acronym for formatted text
 
-    #  Store each character in ft to easily delete characters
-    for i in text:
-        ft.append(i)
-
+    text_len = len(text)
     #  If there are any spaces in the beginning of the text, clear them
-    for index, item in enumerate(ft):
-        if item == ' ' or item == '\t':
-            ft.pop(index)
-            continue
+    while True:
+        if text[0] == ' ' or text[0] == '\t':
+            text = text[:0] + text[1:]
+            text_len -= 1
         else:
             break
 
-    ft_len = len(ft)
+    text_len = len(text)
     i = 0
-
-    while i < ft_len:
-        if ft[i] == '.' or ft[i] == '?' or ft[i] == ':':
-            #  Clear spaces before the ., ? or : if there's any
-            j = i - 1
-            while j:
-                if ft[j] == ' ' or ft[j] == '\t':
-                    ft.pop(j)
-                    j -= 1
-                    ft_len -= 1
-                else:
-                    break
-                j += 1
-
-            #  Clear spaces after ., ? or : if there's any
-            j = i + 1
-            while j < ft_len:
-                if ft[j] == ' ' or ft[j] == '\t':
-                    ft.pop(j)
-                    j -= 1
-                    ft_len -= 1
+    while i < text_len:
+        if text[i] == '.' or text[i] == '?' or text[i] == ':':
+            #  Clear spaces before the ., ? or :
+            while True:
+                if text[i - 1] == ' ' or text[i - 1] == '\t':
+                    text = text[:i - 1] + text[i:]
+                    text_len -= 1
+                    i -= 1
                 else:
                     break
 
-            #  Add the two newlines after the ., ? or :
-            ft.insert(i + 1, "\n\n")
+            #  Clear spaces after the ., ? or :
+            while True and i + 1 < text_len:
+                if text[i + 1] == ' ' or text[i + 1] == '\t':
+                    text = text[:i + 1] + text[i + 2:]
+                    text_len -= 1
+                else:
+                    break
         i += 1
 
-    for i in ft:
+    for i in text:
         print(i, end="")
-    print()
+        if i == '.' or i == '?' or i == ':':
+            print('\n')
