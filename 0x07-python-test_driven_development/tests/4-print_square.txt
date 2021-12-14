@@ -19,6 +19,10 @@ Using ``print_square``
 ####
 ####
 
+>>> print_square(4.5)
+Traceback (most recent call last):
+TypeError: size must be an integer
+
 >>> print_square(None)
 Traceback (most recent call last):
 TypeError: size must be an integer
