@@ -19,18 +19,3 @@ class Rectangle(BaseGeometry):
         self.integer_validator("height", height)
         self.__height = height
 
-    def area(self):
-        """
-        Function is not implemented yet, so it raises an exception
-        """
-        raise Exception("area() is not implemented")
-
-    def integer_validator(self, name, value):
-        """
-        Raises appropriate exceptions with messages. Doesn't do anything
-        in particular
-        """
-        if type(value) != int:
-            raise TypeError(name + " must be an integer")
-        if value <= 0:
-            raise ValueError(name + " must be greater than 0")
