@@ -20,9 +20,7 @@ class BaseGeometry:
         Raises appropriate exceptions with messages. Doesn't do anything
         in particular
         """
-        if type(value) is int or type(value) is float and value <= 0:
-            raise ValueError(name + " must be greater than 0")
         if type(value) != int:
             raise TypeError(name + " must be an integer")
-        else:
-            pass
+        if value <= 0:
+            raise ValueError(name + " must be greater than 0")
