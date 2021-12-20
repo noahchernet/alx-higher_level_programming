@@ -15,5 +15,6 @@ def inherits_from(obj, a_class):
     for i in a_class.__mro__:
         if i.__name__ == obj.__class__.__name__:
             x = True
-    return isinstance(obj, a_class) and issubclass(obj.__class__, a_class) \
-            and not x
+    instance_and_subclass = isinstance(obj, a_class) and issubclass(
+        obj.__class__, a_class)
+    return instance_and_subclass and not x
