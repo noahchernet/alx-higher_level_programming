@@ -20,4 +20,3 @@ class MyList(list):
         Prints a sorted version of the class's instance
         """
         print(sorted(self))
-        return sorted(self)
