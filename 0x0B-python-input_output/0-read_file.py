@@ -16,4 +16,4 @@ def read_file(filename=""):
     if filename == "" or filename is None:
         return
     with open(filename, "r") as f:
-        print(f.read())
+        print(f.read(), end="")
