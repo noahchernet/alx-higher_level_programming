@@ -18,8 +18,9 @@ class Base:
         """Class initializes here
         If id is None, it is set to __nb_objects after it's incremented
         """
-        Base.__nb_objects += 1
         if id is not None:
             self.id = id
         else:
+            #  __nb_objects is incremented only when id is None
+            Base.__nb_objects += 1
             self.id = self.__nb_objects
