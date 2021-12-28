@@ -114,55 +114,46 @@ class RectangleTest(unittest.TestCase):
         self.assertTrue("y must be >= 0" in str(context.exception))
 
         #  Checks for using object's setters
+        r = Rectangle(1, 2, 3, 4)
 
         with self.assertRaises(TypeError) as context:
-            r1 = Rectangle(1, 1, 2, 3)
-            r1.width = "w"
+            r.width = "w"
         self.assertTrue("width must be an integer" in str(context.exception))
 
         with self.assertRaises(ValueError) as context:
-            r2 = Rectangle(1, 2, 3, 4)
-            r2.width = 0
+            r.width = 0
         self.assertTrue("width must be > 0" in str(context.exception))
 
         with self.assertRaises(ValueError) as context:
-            r3 = Rectangle(1, 2, 3, 4)
-            r3.width = -1
+            r.width = -1
         self.assertTrue("width must be > 0" in str(context.exception))
 
         with self.assertRaises(TypeError) as context:
-            r4 = Rectangle(1, 1, 2, 3)
-            r4.height = "w"
+            r.height = "w"
         self.assertTrue("height must be an integer" in str(context.exception))
 
         with self.assertRaises(ValueError) as context:
-            r5 = Rectangle(1, 2, 3, 4)
-            r5.height = 0
+            r.height = 0
         self.assertTrue("height must be > 0" in str(context.exception))
 
         with self.assertRaises(ValueError) as context:
-            r6 = Rectangle(1, 2, 3, 4)
-            r6.height = -6
+            r.height = -6
         self.assertTrue("height must be > 0" in str(context.exception))
 
         with self.assertRaises(TypeError) as context:
-            r7 = Rectangle(1, 1, 2, 3)
-            r7.x = "w"
+            r.x = "w"
         self.assertTrue("x must be an integer" in str(context.exception))
 
         with self.assertRaises(ValueError) as context:
-            r8 = Rectangle(1, 2, 3, 4)
-            r8.x = -6
+            r.x = -6
         self.assertTrue("x must be >= 0" in str(context.exception))
 
         with self.assertRaises(TypeError) as context:
-            r9 = Rectangle(1, 1, 2, 3)
-            r9.y = "w"
+            r.y = "w"
         self.assertTrue("y must be an integer" in str(context.exception))
 
         with self.assertRaises(ValueError) as context:
-            r9 = Rectangle(1, 2, 3, 4)
-            r9.y = -6
+            r.y = -6
         self.assertTrue("y must be >= 0" in str(context.exception))
 
 
