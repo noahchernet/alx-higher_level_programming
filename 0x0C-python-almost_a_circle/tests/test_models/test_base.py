@@ -1,15 +1,19 @@
+#!/usr/bin/python3
+"""
+This unittest module tests the class Base in models/base.py
+"""
+
 import unittest
 
 __import__('sys').path.insert(0, "../../")
 Base = __import__("models.base").base.Base
 
-"""
-This unittest module tests the class Base in models/base.py
-"""
-
 
 class BaseTest(unittest.TestCase):
-    def test_None_id(self):
+    """This class has a battery of functions that test every functionality of
+    the class Base in module models/base"""
+
+    def test_1_None_id(self):
         """Tests if id is set correctly to the number of objects
         instantiated when id is None"""
         b1 = Base()
@@ -23,7 +27,7 @@ class BaseTest(unittest.TestCase):
         b5 = Base()
         self.assertEqual(5, b5.id)
 
-    def test_passed_id(self):
+    def test_2_passed_id(self):
         """Tests if value passed as id is set correctly"""
         b1 = Base(12)
         self.assertEqual(12, b1.id)
@@ -33,11 +37,8 @@ class BaseTest(unittest.TestCase):
         self.assertEqual(1000, b3.id)
         b4 = Base(9876544)
         self.assertEqual(9876544, b4.id)
-        # nb_objects should be zero since no object was initialized with id
-        # as None
-        self.assertEqual(0, Base.__nb_objects)
 
-    def test_None_and_passed_mix(self):
+    def test_3_None_and_passed_mix(self):
         """Mixes value and None passed initializations of Base"""
         b1 = Base(12)
         self.assertEqual(12, b1.id)
@@ -46,12 +47,10 @@ class BaseTest(unittest.TestCase):
         b3 = Base(-12)
         self.assertEqual(-12, b3.id)
         b4 = Base()
-        self.assertEqual(1, b4.id)
+        # Since 6 objects will have been made by the previous functions
+        self.assertEqual(6, b4.id)
         b5 = Base(None)
-        self.assertEqual(2, b5.id)
-        # nb_objects should be 2 since only 2 objects were initialized with id
-        # as None
-        self.assertEqual(2, Base.__nb_objects)
+        self.assertEqual(7, b5.id)
 
 
 if __name__ == '__main__':
