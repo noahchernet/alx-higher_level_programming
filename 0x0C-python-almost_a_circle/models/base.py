@@ -24,3 +24,7 @@ class Base:
             #  __nb_objects is incremented only when id is None
             Base.__nb_objects += 1
             self.id = self.__nb_objects
+
+    @property
+    def nb_objects(self):
+        return self.__nb_objects
