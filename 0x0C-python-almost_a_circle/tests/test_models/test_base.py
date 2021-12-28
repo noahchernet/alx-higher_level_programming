@@ -8,7 +8,7 @@ This unittest module tests the class Base in models/base.py
 """
 
 
-class BaseClassTest(unittest.TestCase):
+class BaseTest(unittest.TestCase):
     def test_None_id(self):
         """Tests if id is set correctly to the number of objects
         instantiated when id is None"""
