@@ -156,6 +156,22 @@ class RectangleTest(unittest.TestCase):
             r.y = -6
         self.assertTrue("y must be >= 0" in str(context.exception))
 
+    def test_4_rectangle_area(self):
+        """Tests if the area of a Rectangle is correct"""
+        r = Rectangle(2, 4, 1, 2)
+        self.assertEqual(8, r.area())
+        r.width = 8
+        r.height = 10
+        self.assertEqual(80, r.area())
+        r.width = 10
+        self.assertEqual(100, r.area())
+        r.x = 8
+        r.y = 9
+        self.assertEqual(100, r.area())
+        r.width = 7
+        r.height = 8
+        self.assertEqual(56, r.area())
+
 
 if __name__ == '__main__':
     unittest.main()

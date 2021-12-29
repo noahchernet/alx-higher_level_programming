@@ -40,6 +40,14 @@ class Rectangle(Base):
             raise ValueError("y must be >= 0")
         self.__y = y
 
+    def area(self):
+        """
+        Calculates the area of the Rectangle
+        Returns:
+            area of the rectangle
+        """
+        return self.__width * self.__height
+
     @property
     def width(self):
         """Get width of Rectangle"""
