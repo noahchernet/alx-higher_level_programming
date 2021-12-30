@@ -189,6 +189,7 @@ class RectangleTest(unittest.TestCase):
         r.width = 5
         r.height = 4
         self.assertEqual(r.display(), "#####\n#####\n#####\n#####")
+        r.__del__()
 
 
 if __name__ == '__main__':
