@@ -13,7 +13,7 @@ class RectangleTest(unittest.TestCase):
     """This class has a battery of functions that test every functionality of
     the class Rectangle in module models/rectangle"""
 
-    def test_1_import_works_correctly(self):
+    def test_import_works_correctly(self):
         """Checks if id is set correctly when many objects are instantiated
         from Rectangle (which inherits from Base)"""
         r1 = Rectangle(10, 12)
@@ -28,8 +28,14 @@ class RectangleTest(unittest.TestCase):
         self.assertEqual(897, r5.id)
         r6 = Rectangle(1, 7, 4, 9)
         self.assertEqual(4, r6.id)
+        r1.__del__()
+        r2.__del__()
+        r3.__del__()
+        r4.__del__()
+        r5.__del__()
+        r6.__del__()
 
-    def test_2_getters_setters(self):
+    def test_getters_setters(self):
         """Checks if getters and setters work as intended"""
         r1 = Rectangle(1, 2, 3, 4)
         self.assertEqual(1, r1.width)
@@ -45,8 +51,9 @@ class RectangleTest(unittest.TestCase):
         self.assertEqual(7, r1.x)
         r1.y = 8
         self.assertEqual(8, r1.y)
+        r1.__del__()
 
-    def test_3_invalid_initialization_and_setting_values(self):
+    def test_invalid_initialization_and_setting_values(self):
         """Tests if every exception is correctly raised for each attribute
         in Rectangle
         """
@@ -156,7 +163,9 @@ class RectangleTest(unittest.TestCase):
             r.y = -6
         self.assertTrue("y must be >= 0" in str(context.exception))
 
-    def test_4_rectangle_area(self):
+        r.__del__()
+
+    def test_rectangle_area(self):
         """Tests if the area of a Rectangle is correct"""
         r = Rectangle(2, 4, 1, 2)
         self.assertEqual(8, r.area())
@@ -171,6 +180,7 @@ class RectangleTest(unittest.TestCase):
         r.width = 7
         r.height = 8
         self.assertEqual(56, r.area())
+        r.__del__()
 
 
 if __name__ == '__main__':

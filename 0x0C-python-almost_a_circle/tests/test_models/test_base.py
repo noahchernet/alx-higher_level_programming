@@ -26,6 +26,11 @@ class BaseTest(unittest.TestCase):
         self.assertEqual(4, b4.id)
         b5 = Base()
         self.assertEqual(5, b5.id)
+        b1.__del__()
+        b2.__del__()
+        b3.__del__()
+        b4.__del__()
+        b5.__del__()
 
     def test_2_passed_id(self):
         """Tests if value passed as id is set correctly"""
@@ -37,6 +42,10 @@ class BaseTest(unittest.TestCase):
         self.assertEqual(1000, b3.id)
         b4 = Base(9876544)
         self.assertEqual(9876544, b4.id)
+        b1.__del__()
+        b2.__del__()
+        b3.__del__()
+        b4.__del__()
 
     def test_3_None_and_passed_mix(self):
         """Mixes value and None passed initializations of Base"""
@@ -48,9 +57,14 @@ class BaseTest(unittest.TestCase):
         self.assertEqual(-12, b3.id)
         b4 = Base()
         # Since 6 objects will have been made by the previous functions
-        self.assertEqual(6, b4.id)
+        self.assertEqual(1, b4.id)
         b5 = Base(None)
-        self.assertEqual(7, b5.id)
+        self.assertEqual(2, b5.id)
+        b1.__del__()
+        b2.__del__()
+        b3.__del__()
+        b4.__del__()
+        b5.__del__()
 
 
 if __name__ == '__main__':
