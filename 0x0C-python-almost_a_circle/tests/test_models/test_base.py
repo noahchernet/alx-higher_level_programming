@@ -13,7 +13,7 @@ class BaseTest(unittest.TestCase):
     """This class has a battery of functions that test every functionality of
     the class Base in module models/base"""
 
-    def test_1_None_id(self):
+    def test_None_id(self):
         """Tests if id is set correctly to the number of objects
         instantiated when id is None"""
         b1 = Base()
@@ -32,7 +32,7 @@ class BaseTest(unittest.TestCase):
         b4.__del__()
         b5.__del__()
 
-    def test_2_passed_id(self):
+    def test_passed_id(self):
         """Tests if value passed as id is set correctly"""
         b1 = Base(12)
         self.assertEqual(12, b1.id)
@@ -47,7 +47,7 @@ class BaseTest(unittest.TestCase):
         b3.__del__()
         b4.__del__()
 
-    def test_3_None_and_passed_mix(self):
+    def test_None_and_passed_mix(self):
         """Mixes value and None passed initializations of Base"""
         b1 = Base(12)
         self.assertEqual(12, b1.id)
