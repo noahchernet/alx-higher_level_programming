@@ -209,8 +209,12 @@ class RectangleTest(unittest.TestCase):
         self.assertEqual("[Rectangle] (2) 0/0 - 6/8", r5.__str__())
         r6 = Rectangle(6, 8, 1, 2, 10)
         self.assertEqual("[Rectangle] (10) 1/2 - 6/8", r6.__str__())
-        r6 = Rectangle(6, 8, 2, 3)
-        self.assertEqual("[Rectangle] (3) 2/3 - 6/8", r6.__str__())
+        r7 = Rectangle(6, 8, 2, 3)
+        self.assertEqual("[Rectangle] (3) 2/3 - 6/8", r7.__str__())
+        r4.__del__()
+        r5.__del__()
+        r6.__del__()
+        r7.__del__()
 
 
 if __name__ == '__main__':
