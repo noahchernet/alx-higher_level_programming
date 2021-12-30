@@ -2,8 +2,6 @@
 """Module rectangle
 Contains class Rectangle, which inherits from Base
 """
-from builtins import str
-
 from models.base import Base
 
 
@@ -53,10 +51,14 @@ class Rectangle(Base):
         return self.__width * self.__height
 
     def display(self):
-        """Prints a Rectangle with sides width and height, with the '#' char"""
+        """Prints a Rectangle with sides width and height, with the '#' char
+        The x and y coordinates are also used to push the Rectangle in the x
+        and y directions when printing"""
         rectangle_repr = ""
 
+        rectangle_repr += "\n" * self.__y
         for i in range(self.__height):
+            rectangle_repr += self.__x * " "
             for j in range(self.__width):
                 rectangle_repr += "#"
             rectangle_repr += "\n" if i != self.__height - 1 else ""

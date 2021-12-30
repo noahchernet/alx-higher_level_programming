@@ -185,10 +185,15 @@ class RectangleTest(unittest.TestCase):
     def test_display_rectangle(self):
         """Tests Rectangle is printed to the screen correctly"""
         r = Rectangle(1, 2, 1, 1)
-        self.assertEqual(r.display(), "#\n#")
+        self.assertEqual(r.display(), "\n #\n #")
         r.width = 5
         r.height = 4
-        self.assertEqual(r.display(), "#####\n#####\n#####\n#####")
+        self.assertEqual(r.display(), "\n #####\n #####\n #####\n #####")
+        r.x = 4
+        r.y = 3
+        r.width = 3
+        r.height = 3
+        self.assertEqual(r.display(), "\n\n\n    ###\n    ###\n    ###")
         r.__del__()
 
     def test_str_representation(self):
