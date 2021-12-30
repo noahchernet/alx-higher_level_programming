@@ -191,6 +191,27 @@ class RectangleTest(unittest.TestCase):
         self.assertEqual(r.display(), "#####\n#####\n#####\n#####")
         r.__del__()
 
+    def test_str_representation(self):
+        """Tests if __str__ returns the correct string representation for
+        the Rectangle class"""
+        r1 = Rectangle(2, 3, 1, 2)
+        self.assertEqual("[Rectangle] (1) 1/2 - 2/3", r1.__str__())
+        r2 = Rectangle(6, 8, 2)
+        self.assertEqual("[Rectangle] (2) 2/0 - 6/8", r2.__str__())
+        r3 = Rectangle(6, 8, 2, 1, 189)
+        self.assertEqual("[Rectangle] (189) 2/1 - 6/8", r3.__str__())
+        r1.__del__()
+        r2.__del__()
+        r3.__del__()
+        r4 = Rectangle(6, 8, 2, 1)
+        self.assertEqual("[Rectangle] (1) 2/1 - 6/8", r4.__str__())
+        r5 = Rectangle(6, 8)
+        self.assertEqual("[Rectangle] (2) 0/0 - 6/8", r5.__str__())
+        r6 = Rectangle(6, 8, 1, 2, 10)
+        self.assertEqual("[Rectangle] (10) 1/2 - 6/8", r6.__str__())
+        r6 = Rectangle(6, 8, 2, 3)
+        self.assertEqual("[Rectangle] (3) 2/3 - 6/8", r6.__str__())
+
 
 if __name__ == '__main__':
     unittest.main()
