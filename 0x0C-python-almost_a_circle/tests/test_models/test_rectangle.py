@@ -182,6 +182,14 @@ class RectangleTest(unittest.TestCase):
         self.assertEqual(56, r.area())
         r.__del__()
 
+    def test_display_rectangle(self):
+        """Tests Rectangle is printed to the screen correctly"""
+        r = Rectangle(1, 2, 1, 1)
+        self.assertEqual(r.display(), "#\n#")
+        r.width = 5
+        r.height = 4
+        self.assertEqual(r.display(), "#####\n#####\n#####\n#####")
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -8,6 +8,8 @@ from models.base import Base
 class Rectangle(Base):
     """
     Inherits and extends from Base
+    Calculates the area of a Rectangle, prints a Rectangle based on its
+    width and height
     """
 
     def __init__(self, width, height, x=0, y=0, id=None):
@@ -47,6 +49,18 @@ class Rectangle(Base):
             area of the rectangle
         """
         return self.__width * self.__height
+
+    def display(self):
+        """Prints a Rectangle with sides width and height, with the '#' char"""
+        rectangle_repr = ""
+
+        for i in range(self.__height):
+            for j in range(self.__width):
+                rectangle_repr += "#"
+            rectangle_repr += "\n" if i != self.__height - 1 else ""
+
+        print(rectangle_repr)
+        return rectangle_repr
 
     @property
     def width(self):
