@@ -224,6 +224,22 @@ class RectangleTest(unittest.TestCase):
         r6.__del__()
         r7.__del__()
 
+    def test_update(self):
+        """Tests if updating the attributes of Rectangle using update()
+        works as intended"""
+        r = Rectangle(1, 2, 3, 4)
+        r.update(2)
+        self.assertEqual(r.__str__(), "[Rectangle] (2) 3/4 - 1/2")
+        r.update(3, 3)
+        self.assertEqual(r.__str__(), "[Rectangle] (3) 3/4 - 3/2")
+        r.update(4, 3, 4)
+        self.assertEqual(r.__str__(), "[Rectangle] (4) 3/4 - 3/4")
+        r.update(5, 3, 4, 5)
+        self.assertEqual(r.__str__(), "[Rectangle] (5) 5/4 - 3/4")
+        r.update(6, 3, 4, 5, 6)
+        self.assertEqual(r.__str__(), "[Rectangle] (6) 5/6 - 3/4")
+        r.__del__
+
 
 if __name__ == '__main__':
     unittest.main()
