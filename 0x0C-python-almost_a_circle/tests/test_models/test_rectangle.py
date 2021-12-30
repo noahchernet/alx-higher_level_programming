@@ -228,6 +228,8 @@ class RectangleTest(unittest.TestCase):
         """Tests if updating the attributes of Rectangle using update()
         works as intended"""
         r = Rectangle(1, 2, 3, 4)
+
+        #  Using *args only
         r.update(2)
         self.assertEqual(r.__str__(), "[Rectangle] (2) 3/4 - 1/2")
         r.update(3, 3)
@@ -238,7 +240,19 @@ class RectangleTest(unittest.TestCase):
         self.assertEqual(r.__str__(), "[Rectangle] (5) 5/4 - 3/4")
         r.update(6, 3, 4, 5, 6)
         self.assertEqual(r.__str__(), "[Rectangle] (6) 5/6 - 3/4")
-        r.__del__
+
+        # Using **kwargs, and mixing it with *args
+        r.update(x=12, y=24)
+        self.assertEqual(r.__str__(), "[Rectangle] (6) 12/24 - 3/4")
+        r.update(width=21, height=4)
+        self.assertEqual(r.__str__(), "[Rectangle] (6) 12/24 - 21/4")
+        r.update(id=8)
+        self.assertEqual(r.__str__(), "[Rectangle] (8) 12/24 - 21/4")
+        r.update(1, 2, 3, x=0, y=0)
+        self.assertEqual(r.__str__(), "[Rectangle] (1) 12/24 - 2/3")
+        r.update()
+        self.assertEqual(r.__str__(), "[Rectangle] (1) 12/24 - 2/3")
+        r.__del__()
 
 
 if __name__ == '__main__':

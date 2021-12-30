@@ -66,19 +66,29 @@ class Rectangle(Base):
         print(rectangle_repr)
         return rectangle_repr
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         """Updates some or all of the attributes based on how many arguments
         are passed
         If args' list index gets out of range i.e. it gets to the end of the
-        list, the updating of the attributes gets done"""
-        try:
-            self.id = args[0]
-            self.__width = args[1]
-            self.__height = args[2]
-            self.__x = args[3]
-            self.__y = args[4]
-        except IndexError:
-            pass
+        list, the updating of the attributes gets done
+
+        If args is empty, the values in kwargs are used to update the
+        attributes' values"""
+        if args:
+            try:
+                self.id = args[0]
+                self.__width = args[1]
+                self.__height = args[2]
+                self.__x = args[3]
+                self.__y = args[4]
+            except IndexError:
+                pass
+        else:
+            for key in kwargs.keys():
+                try:
+                    self.__setattr__(key, kwargs[key])
+                except AttributeError:
+                    pass
 
     @property
     def width(self):
