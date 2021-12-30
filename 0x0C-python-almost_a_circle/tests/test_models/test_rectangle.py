@@ -194,6 +194,9 @@ class RectangleTest(unittest.TestCase):
         r.width = 3
         r.height = 3
         self.assertEqual(r.display(), "\n\n\n    ###\n    ###\n    ###")
+        r.x = 0
+        r.y = 0
+        self.assertEqual(r.display(), "###\n###\n###")
         r.__del__()
 
     def test_str_representation(self):
