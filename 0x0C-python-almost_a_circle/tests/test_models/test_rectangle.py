@@ -254,6 +254,21 @@ class RectangleTest(unittest.TestCase):
         self.assertEqual(r.__str__(), "[Rectangle] (1) 12/24 - 2/3")
         r.__del__()
 
+    def test_to_dictionary(self):
+        """Tests the to_dictionary method of Rectangle.
+        It should let a new Rectangle instance be created from the output"""
+        r = Rectangle(2, 4, 1, 1)
+        self.assertEqual(r.to_dictionary(), {"id": 1, "width": 2,
+                                             "height": 4, "x": 1, "y": 1})
+
+        r1 = Rectangle(1, 1)
+        r1.update(**r.to_dictionary())
+        self.assertEqual(r1.to_dictionary(), {"id": 1, "width": 2,
+                                              "height": 4, "x": 1, "y": 1})
+        self.assertEqual(r.__str__(), r1.__str__())
+        r.update(10, 20)
+        self.assertNotEqual(r.to_dictionary(), r1.to_dictionary())
+
 
 if __name__ == '__main__':
     unittest.main()

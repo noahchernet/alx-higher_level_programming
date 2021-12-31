@@ -90,6 +90,11 @@ class Rectangle(Base):
                 except AttributeError:
                     pass
 
+    def to_dictionary(self):
+        """Returns a key-value pair of all attributes and their values"""
+        return {"id": self.id, "width": self.width, "height": self.height,
+                "x": self.x, "y": self.y}
+
     @property
     def width(self):
         """Get width of Rectangle"""
