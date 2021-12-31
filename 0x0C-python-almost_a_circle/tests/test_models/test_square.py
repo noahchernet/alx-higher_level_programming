@@ -60,6 +60,14 @@ class TestSquare(unittest.TestCase):
         s.update(size_widht=8)
         self.assertEqual("[Square] (10) 10/10 - 8", s.__str__())
 
+        with self.assertRaises(ValueError) as context:
+            s.update(x=-1, y=-2)
+        self.assertTrue("x must be >= 0" in str(context.exception))
+
+        with self.assertRaises(ValueError) as context:
+            s.update(x=9, y=-10)
+        self.assertTrue("y must be >= 0" in str(context.exception))
+
 
 if __name__ == '__main__':
     unittest.main()
