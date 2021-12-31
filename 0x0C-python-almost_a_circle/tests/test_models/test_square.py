@@ -20,6 +20,22 @@ class TestSquare(unittest.TestCase):
         s.update(4, 8, 8, 1, 2)
         self.assertEqual("[Square] (4) 1/2 - 8", s.__str__())
 
+    def test_invalid_setting_size(self):
+
+        s = Square(1, 2, 3, 4)
+
+        with self.assertRaises(TypeError) as context:
+            s.size = "w"
+        self.assertTrue("width must be an integer" in str(context.exception))
+
+        with self.assertRaises(ValueError) as context:
+            s.size = 0
+        self.assertTrue("width must be > 0" in str(context.exception))
+
+        with self.assertRaises(ValueError) as context:
+            s.size = -1
+        self.assertTrue("width must be > 0" in str(context.exception))
+
 
 if __name__ == '__main__':
     unittest.main()
