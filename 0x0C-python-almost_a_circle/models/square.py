@@ -60,6 +60,10 @@ class Square(Rectangle):
                 except AttributeError:
                     pass
 
+    def to_dictionary(self):
+        """Returns a key-value pair of all attributes and their values"""
+        return {"id": self.id, "size": self.width, "x": self.x, "y": self.y}
+
     def __str__(self):
         return "[Square] ({}) {}/{} - {}".format(self.id, self.x,
                                                  self.y, self.width)

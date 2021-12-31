@@ -68,6 +68,21 @@ class TestSquare(unittest.TestCase):
             s.update(x=9, y=-10)
         self.assertTrue("y must be >= 0" in str(context.exception))
 
+    def test_to_dictionary(self):
+        """Tests the to_dictionary method of Square.
+        It should let a new Rectangle instance be created from the output"""
+        r = Square(2, 1, 1)
+        self.assertEqual(r.to_dictionary(), {"id": 1, "size": 2, "x": 1,
+                                             "y": 1})
+
+        r1 = Square(1, 1)
+        r1.update(**r.to_dictionary())
+        self.assertEqual(r1.to_dictionary(), {"id": 1, "size": 2, "x": 1,
+                                              "y": 1})
+        self.assertEqual(r.__str__(), r1.__str__())
+        r.update(10, 20)
+        self.assertNotEqual(r.to_dictionary(), r1.to_dictionary())
+
 
 if __name__ == '__main__':
     unittest.main()
