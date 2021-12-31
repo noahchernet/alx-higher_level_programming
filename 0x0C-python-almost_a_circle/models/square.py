@@ -32,6 +32,34 @@ class Square(Rectangle):
         self.width = value
         self.height = value
 
+    def update(self, *args, **kwargs):
+        """Updates some or all of the attributes based on how many arguments
+        are passed
+        If args' list index gets out of range i.e. it gets to the end of the
+        list, the updating of the attributes gets done
+
+        If args is empty, the values in kwargs are used to update the
+        attributes' values"""
+        if args:
+            try:
+                self.id = args[0]
+                self.width = args[1]
+                self.height = args[1]
+                self.x = args[2]
+                self.y = args[3]
+            except IndexError:
+                pass
+        else:
+            for key in kwargs.keys():
+                try:
+                    if key == "size":
+                        self.__setattr__("width", kwargs[key])
+                        self.__setattr__("height", kwargs[key])
+                        continue
+                    self.__setattr__(key, kwargs[key])
+                except AttributeError:
+                    pass
+
     def __str__(self):
         return "[Square] ({}) {}/{} - {}".format(self.id, self.x,
                                                  self.y, self.width)
