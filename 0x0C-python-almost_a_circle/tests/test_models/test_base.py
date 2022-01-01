@@ -4,9 +4,8 @@ This unittest module tests the class Base in models/base.py
 """
 
 import unittest
-
-__import__('sys').path.insert(0, "../../")
-Base = __import__("models.base").base.Base
+from models.base import Base
+from models.rectangle import Rectangle
 
 
 class BaseTest(unittest.TestCase):
@@ -65,6 +64,7 @@ class BaseTest(unittest.TestCase):
         b3.__del__()
         b4.__del__()
         b5.__del__()
+
 
 
 if __name__ == '__main__':

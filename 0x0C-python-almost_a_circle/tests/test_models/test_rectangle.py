@@ -4,9 +4,7 @@ This unittest module test_rectangle tests the class Rectangle in
 models/rectangle
 """
 import unittest
-
-__import__('sys').path.insert(0, "../../")
-Rectangle = __import__("models.rectangle").rectangle.Rectangle
+from models.rectangle import Rectangle
 
 
 class RectangleTest(unittest.TestCase):

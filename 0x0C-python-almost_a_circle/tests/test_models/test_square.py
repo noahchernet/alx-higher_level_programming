@@ -3,9 +3,7 @@
 Tests the class Square from models/square
 """
 import unittest
-
-__import__('sys').path.insert(0, "../../")
-Square = __import__("models.square").square.Square
+from models.square import Square
 
 
 class TestSquare(unittest.TestCase):
