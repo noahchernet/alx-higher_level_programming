@@ -65,6 +65,18 @@ class BaseTest(unittest.TestCase):
         b4.__del__()
         b5.__del__()
 
+    def test_to_json_string(self):
+        """Tests the to_json_string method from Base"""
+        r = Rectangle(2, 8)
+        self.assertEqual(r.to_json_string([r.to_dictionary()]),
+                         "[{\"id\": 1, \"width\": 2, \"height\": 8, \"x\": "
+                         "0, \"y\": 0}]")
+        r.update(x=10, y=90)
+        self.assertEqual(r.to_json_string([r.to_dictionary()]),
+                         "[{\"id\": 1, \"width\": 2, \"height\": 8, \"x\": "
+                         "10, \"y\": 90}]")
+        self.assertEqual(r.to_json_string([]), "[]")
+        self.assertEqual(r.to_json_string(None), "[]")
 
 
 if __name__ == '__main__':
