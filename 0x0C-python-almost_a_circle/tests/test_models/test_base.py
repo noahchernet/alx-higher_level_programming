@@ -6,6 +6,7 @@ This unittest module tests the class Base in models/base.py
 import unittest
 from models.base import Base
 from models.rectangle import Rectangle
+from models.square import Square
 
 
 class BaseTest(unittest.TestCase):
@@ -77,6 +78,60 @@ class BaseTest(unittest.TestCase):
                          "10, \"y\": 90}]")
         self.assertEqual(r.to_json_string([]), "[]")
         self.assertEqual(r.to_json_string(None), "[]")
+
+    def test_save_to_file(self):
+        """Tests if lists of objects are saved successfully into their class
+        name with the .json extension. Tests the save_to_file() class method"""
+
+        Square.save_to_file(None)
+        with open(Square.__name__ + ".json", "r") as file:
+            self.assertEqual(file.read(), "[]")
+        Square.save_to_file([])
+        with open(Square.__name__ + ".json", "r") as file:
+            self.assertEqual(file.read(), "[]")
+
+        rectangles = [Rectangle(1, 2, 3, 4),
+                      Rectangle(5, 6, 7, 8),
+                      Rectangle(9, 10, 11, 12),
+                      Rectangle(13, 14, 15, 16),
+                      Rectangle(17, 18, 19, 20)]
+        Rectangle.save_to_file(rectangles)
+
+        with open(rectangles[0].__class__.__name__ + ".json", "r") as file:
+            self.assertEqual(file.read(),
+                             "[{\"id\": 1, \"width\": 1, \"height\": 2, "
+                             "\"x\": 3, \"y\": 4}, "
+                             "{\"id\": 2, \"width\": 5, \"height\": 6, "
+                             "\"x\": 7, \"y\": 8}, "
+                             "{\"id\": 3, \"width\": 9, \"height\": 10, "
+                             "\"x\": 11, \"y\": 12}, "
+                             "{\"id\": 4, \"width\": 13, \"height\": 14, "
+                             "\"x\": 15, \"y\": 16}, "
+                             "{\"id\": 5, \"width\": 17, \"height\": 18, "
+                             "\"x\": 19, \"y\": 20}]")
+        for rectangle in rectangles:
+            rectangle.__del__()
+        squares = [Square(1, 3, 4),
+                   Square(5, 7, 8),
+                   Square(9, 11, 12),
+                   Square(13, 15, 16),
+                   Square(17, 19, 20)]
+        Square.save_to_file(squares)
+
+        with open(squares[0].__class__.__name__ + ".json", "r") as file:
+            self.assertEqual(file.read(),
+                             "[{\"id\": 1, \"size\": 1, "
+                             "\"x\": 3, \"y\": 4}, "
+                             "{\"id\": 2, \"size\": 5, "
+                             "\"x\": 7, \"y\": 8}, "
+                             "{\"id\": 3, \"size\": 9, "
+                             "\"x\": 11, \"y\": 12}, "
+                             "{\"id\": 4, \"size\": 13, "
+                             "\"x\": 15, \"y\": 16}, "
+                             "{\"id\": 5, \"size\": 17, "
+                             "\"x\": 19, \"y\": 20}]")
+        for square in squares:
+            square.__del__()
 
 
 if __name__ == '__main__':

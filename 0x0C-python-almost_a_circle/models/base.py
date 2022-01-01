@@ -39,6 +39,25 @@ class Base:
             return "[]"
         return json.dumps(list_dictionaries)
 
+    @classmethod
+    def save_to_file(cls, list_objs):
+        """Saves the list of objects to a file with cls' class name (
+        clsName.json) in JSON format"""
+
+        with open(cls.__name__ + ".json", "w") as f:
+            if list_objs is None or list_objs == []:
+                f.write("[]")
+                return
+            for i in range(len(list_objs)):
+                if i == 0:
+                    f.write("[")
+                if i + 1 != len(list_objs):
+                    eol = ", "
+                else:
+                    eol = "]"
+                f.write(Base.to_json_string(list_objs[i].to_dictionary()) +
+                        eol)
+
     def __del__(self):
         """Deletes this object
         __nb_objects is decreased by 1 only if the object had id initialized
