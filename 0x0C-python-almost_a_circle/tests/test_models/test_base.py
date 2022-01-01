@@ -133,6 +133,24 @@ class BaseTest(unittest.TestCase):
         for square in squares:
             square.__del__()
 
+    def test_from_json_string(self):
+        """Tests the method from_json_string that converts a JSON string to
+        a list object"""
+        self.assertEqual(Base.from_json_string("[]"), [])
+        self.assertEqual(Base.from_json_string(""), [])
+        self.assertEqual(Base.from_json_string(None), [])
+
+        r = Rectangle(2, 8)
+        self.assertEqual(Base.from_json_string("[{\"id\": 1, \"width\": 2, "
+                                               "\"height\": 8, \"x\": " "0, "
+                                               "\"y\": 0}]"),
+                         [r.to_dictionary()])
+        r.update(x=10, y=90)
+        self.assertEqual(Base.from_json_string("[{\"id\": 1, \"width\": 2, "
+                                               "\"height\": 8, \"x\": "
+                                               "10, \"y\": 90}]"),
+                         [r.to_dictionary()])
+
 
 if __name__ == '__main__':
     unittest.main()

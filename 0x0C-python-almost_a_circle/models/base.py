@@ -58,6 +58,14 @@ class Base:
                 f.write(Base.to_json_string(list_objs[i].to_dictionary()) +
                         eol)
 
+    @staticmethod
+    def from_json_string(json_string):
+        """Returns a list of objects stored in json_string. Deserializes
+        json_string"""
+        if json_string is None or json_string == [] or json_string == "":
+            return []
+        return json.loads(json_string)
+
     def __del__(self):
         """Deletes this object
         __nb_objects is decreased by 1 only if the object had id initialized
