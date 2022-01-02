@@ -151,6 +151,19 @@ class BaseTest(unittest.TestCase):
                                                "10, \"y\": 90}]"),
                          [r.to_dictionary()])
 
+    def test_create(self):
+        """Tests the class method create if it works correctly"""
+        r1 = Rectangle.create(id=1, width=2, height=4, x=1, y=1)
+        self.assertEqual(r1.to_dictionary(), Rectangle(2, 4, 1, 1,
+                                                       1).to_dictionary())
+        r2 = Rectangle.create(**{"id": 1, "width": 2, "height": 4, "x": 1,
+                                 "y": 1})
+        self.assertEqual(r2.to_dictionary(), Rectangle(2, 4, 1, 1,
+                                                       1).to_dictionary())
+        s1 = Square.create(**Square(8, 12, 14, 8).to_dictionary())
+        self.assertEqual(s1.to_dictionary(), Square(8, 12, 14,
+                                                    8).to_dictionary())
+
 
 if __name__ == '__main__':
     unittest.main()
