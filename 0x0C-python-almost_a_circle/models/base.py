@@ -24,12 +24,10 @@ class Base:
         """
         if id is not None:
             self.id = id
-            self.__id_passed = True
         else:
             #  __nb_objects is incremented only when id is None
             Base.__nb_objects += 1
             self.id = self.__nb_objects
-            self.__id_passed = False
 
     @staticmethod
     def to_json_string(list_dictionaries):
@@ -81,6 +79,6 @@ class Base:
         """Deletes this object
         __nb_objects is decreased by 1 only if the object had id initialized
         to None"""
-        if (not self.__id_passed) and Base.__nb_objects > 0:
+        if Base.__nb_objects > 0:
             Base.__nb_objects -= 1
         del self
