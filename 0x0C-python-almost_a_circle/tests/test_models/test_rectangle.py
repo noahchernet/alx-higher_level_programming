@@ -228,6 +228,7 @@ class RectangleTest(unittest.TestCase):
         r = Rectangle(1, 2, 3, 4)
 
         #  Using *args only
+        r.update()
         r.update(2)
         self.assertEqual(r.__str__(), "[Rectangle] (2) 3/4 - 1/2")
         r.update(3, 3)
@@ -249,6 +250,8 @@ class RectangleTest(unittest.TestCase):
         r.update(1, 2, 3, x=0, y=0)
         self.assertEqual(r.__str__(), "[Rectangle] (1) 12/24 - 2/3")
         r.update()
+        self.assertEqual(r.__str__(), "[Rectangle] (1) 12/24 - 2/3")
+        r.update(xml=12, ydasf=31)
         self.assertEqual(r.__str__(), "[Rectangle] (1) 12/24 - 2/3")
         r.__del__()
 

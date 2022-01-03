@@ -85,10 +85,7 @@ class Rectangle(Base):
                 pass
         else:
             for key in kwargs.keys():
-                try:
-                    self.__setattr__(key, kwargs[key])
-                except AttributeError:
-                    pass
+                self.__setattr__(key, kwargs[key])
 
     def to_dictionary(self):
         """Returns a key-value pair of all attributes and their values"""
