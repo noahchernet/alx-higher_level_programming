@@ -75,6 +75,21 @@ class Base:
         instance.update(**dictionary)
         return instance
 
+    @classmethod
+    def load_from_file(cls):
+        """Loads Base or Base-inherited objects from <cls>.json, and returns
+        the objects in a list of instances"""
+        try:
+            with open(cls.__name__ + ".json", "r") as f:
+                obj_dict_list = cls.from_json_string(f.read())
+                cls_objects = []
+                for i in obj_dict_list:
+                    cls_objects.append(cls.create(**i))
+                return cls_objects
+
+        except FileNotFoundError:
+            return []
+
     def __del__(self):
         """Deletes this object
         __nb_objects is decreased by 1 only if the object had id initialized

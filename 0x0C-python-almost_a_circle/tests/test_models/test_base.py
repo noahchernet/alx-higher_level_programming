@@ -97,7 +97,7 @@ class BaseTest(unittest.TestCase):
                       Rectangle(17, 18, 19, 20)]
         Rectangle.save_to_file(rectangles)
 
-        with open(rectangles[0].__class__.__name__ + ".json", "r") as file:
+        with open("Rectangle.json", "r") as file:
             self.assertEqual(file.read(),
                              "[{\"id\": 1, \"width\": 1, \"height\": 2, "
                              "\"x\": 3, \"y\": 4}, "
@@ -118,7 +118,7 @@ class BaseTest(unittest.TestCase):
                    Square(17, 19, 20)]
         Square.save_to_file(squares)
 
-        with open(squares[0].__class__.__name__ + ".json", "r") as file:
+        with open("Square.json", "r") as file:
             self.assertEqual(file.read(),
                              "[{\"id\": 1, \"size\": 1, "
                              "\"x\": 3, \"y\": 4}, "
@@ -132,6 +132,11 @@ class BaseTest(unittest.TestCase):
                              "\"x\": 19, \"y\": 20}]")
         for square in squares:
             square.__del__()
+        #  Remove the two lines below to see the files created by save_to_file
+        #  Doing so will break the unittests from running correctly, since
+        #  test_load_from_file() will check for non-existing files.
+        __import__("os").remove("Rectangle.json")
+        __import__("os").remove("Square.json")
 
     def test_from_json_string(self):
         """Tests the method from_json_string that converts a JSON string to
@@ -163,6 +168,33 @@ class BaseTest(unittest.TestCase):
         s1 = Square.create(**Square(8, 12, 14, 8).to_dictionary())
         self.assertEqual(s1.to_dictionary(), Square(8, 12, 14,
                                                     8).to_dictionary())
+
+    def test_load_from_file(self):
+        """Tests if the class method load_from_file works correctly"""
+        l1 = Rectangle.load_from_file()
+        self.assertEqual(l1, [])
+        l2 = Square.load_from_file()
+        self.assertEqual(l2, [])
+
+        rectangles = [Rectangle(1, 2, 3, 4),
+                      Rectangle(5, 6, 7, 8),
+                      Rectangle(9, 10, 11, 12),
+                      Rectangle(13, 14, 15, 16),
+                      Rectangle(17, 18, 19, 20)]
+        Rectangle.save_to_file(rectangles)
+        file_loaded_rectangles = Rectangle.load_from_file()
+        for i, j in zip(rectangles, file_loaded_rectangles):
+            self.assertEqual(i.__str__(), j.__str__())
+
+        squares = [Square(1, 3, 4),
+                   Square(5, 7, 8),
+                   Square(9, 11, 12),
+                   Square(13, 15, 16),
+                   Square(17, 19, 20)]
+        Square.save_to_file(squares)
+        file_loaded_squares = Square.load_from_file()
+        for i, j in zip(squares, file_loaded_squares):
+            self.assertEqual(i.__str__(), j.__str__())
 
 
 if __name__ == '__main__':
