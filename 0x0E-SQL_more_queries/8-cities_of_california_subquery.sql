@@ -2,4 +2,4 @@
 -- in the database hbtn_0d_usa.
 USE hbtn_0d_usa;
 SELECT * FROM cities WHERE cities.state_id=(SELECT id FROM states WHERE
-    states.name = 'California' )
+    states.name = 'California') ORDER BY cities.id;
