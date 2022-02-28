@@ -1,6 +1,9 @@
 #!/usr/bin/node
 exports.callMeMoby = function (x, theFunction) {
-  while (x--) {
-    theFunction();
+  x = parseInt(x);
+  if (!isNaN(x)) {
+    while (x--) {
+      theFunction();
+    }
   }
 };
