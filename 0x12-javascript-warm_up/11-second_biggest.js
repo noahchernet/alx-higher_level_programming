@@ -8,7 +8,7 @@ for (let i = 2; i < argv.length; i++) {
   nums.push(parseInt(argv[i]));
 }
 
-nums.sort();
+nums.sort((a, b) => a - b);
 
 if (nums.length < 2) {
   console.log('0');
