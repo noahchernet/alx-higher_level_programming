@@ -17,7 +17,7 @@ Object.values(dict).forEach((occurrence) => {
       return occurrence === value;
     });
 
-    // Add the matching ids to the newDict 
+    // Add the matching ids to the newDict
     userIdsMatchingWithOccurrence.forEach(item => {
       newDict[occurrence].push(item[0]);
     });
