@@ -9,7 +9,7 @@ const newDict = {};
 // Go through each occurrence in the dictionary.
 Object.values(dict).forEach((occurrence) => {
   // Add a new entry if the occurrence's user ids is not filled in already
-  if (!(occurrence in Object.keys(newDict))) {
+  if (Object.keys(newDict).indexOf(occurrence) === -1) {
     newDict[occurrence] = [];
 
     // Get all user ids that have matching occurrences
