@@ -19,7 +19,8 @@ def main():
                          user=argv[1], passwd=argv[2], db=argv[3])
     c = db.cursor()
 
-    #  Clean SQL injection risky characters from the state name argument
+    #  Stop program if SQL injection risky characters are
+    #  in the state name argument
     state_name = argv[4]
     escape_strings = ["\x00", "\n", "\r", "\\", "'", '\"', r"\xla"]
     for i in escape_strings:
