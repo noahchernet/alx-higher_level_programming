@@ -23,7 +23,8 @@ def main():
     state_name = argv[4]
     escape_strings = ["\x00", "\n", "\r", "\\", "'", '\"', r"\xla"]
     for i in escape_strings:
-        state_name = state_name.replace(i, "")
+        if i in state_name:
+            return
 
     c.execute(
         "SELECT * FROM states WHERE name='{}' ORDER BY id".format(argv[4]))
