@@ -18,7 +18,7 @@ def main():
     c = db.cursor()
     c.execute("SELECT cities.id, cities.name," +
               "states.name FROM cities INNER JOIN states " +
-              "WHERE cities.state_id = states.id;")
+              "WHERE cities.state_id = states.id ORDER BY cities.id;")
     for i in c.fetchall():
         print(i)
 
