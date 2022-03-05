@@ -21,7 +21,7 @@ def main():
     session = Session()
 
     state = session.query(State).get(2)
-    #  Update object (row)
+    #  Update object (row) only if it exists
     if state:
         state.name = 'New Mexico'
         session.commit()
