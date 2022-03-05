@@ -9,7 +9,8 @@ Base = declarative_base()
 
 class State(Base):
     """Class State
-    Inherits from class Base to define what the table State looks like in a database.
+    Inherits from class Base to define what the table State
+    looks like in a database.
     """
     __tablename__ = "states"
 
