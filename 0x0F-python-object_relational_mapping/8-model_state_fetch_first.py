@@ -21,10 +21,11 @@ def main():
     session = Session()
 
     states_found = session.query(State)
+    first_state = states_found.all()[0]
 
-    if len(states_found.all()):
-        print(str(states_found.all()[0].id) +
-              ": " + states_found.all()[0].name)
+    if first_state:
+        print(str(first_state.id) +
+              ": " + first_state.name)
     else:
         print("Nothing")
 
