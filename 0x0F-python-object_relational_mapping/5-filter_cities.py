@@ -41,6 +41,9 @@ def main():
             print(", ", end="")
         else:
             print()
+    # Print a new line if cities is empty
+    if not len(cities):
+        print()
 
 
 if __name__ == "__main__":
