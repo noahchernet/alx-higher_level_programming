@@ -16,7 +16,7 @@ def main():
     db = MySQLdb.connect(host="localhost", port=3306,
                          user=argv[1], passwd=argv[2], db=argv[3])
     c = db.cursor()
-    c.execute("SELECT * FROM states WHERE name REGEXP '^N' ORDER BY id")
+    c.execute("SELECT * FROM states WHERE  name LIKE BINARY 'N%' ORDER BY id")
     for i in c.fetchall():
         print(i)
 
