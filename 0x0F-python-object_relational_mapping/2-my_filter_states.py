@@ -19,7 +19,7 @@ def main():
                          user=argv[1], passwd=argv[2], db=argv[3])
     c = db.cursor()
     c.execute(
-        "SELECT * FROM states WHERE name='{}' ORDER BY id".format(argv[4]))
+        "SELECT * FROM states WHERE name LIKE BINARY '{}' ORDER BY id".format(argv[4]))
     for i in c.fetchall():
         print(i)
 
