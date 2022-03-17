@@ -3,10 +3,6 @@
 Contains function find_peak
 '''
 
-
-from re import L
-
-
 def find_peak(list_of_integers):
     '''Finds the biggest number in list_of_integers
     and returns it. If the list is empty, None is returned.
