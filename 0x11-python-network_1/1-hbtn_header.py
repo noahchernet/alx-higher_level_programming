@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 '''Module 1-hbtn_header
 Requests a URL and displays value of X-request-Id'''
-import urllib
+import urllib.request
 from sys import argv
 
 
