@@ -11,8 +11,12 @@ def main():
     Details about the http response
     are printed.
     '''
+    url = 'https://alx-intranet.hbtn.io/status'
+    if len(__import__('sys').argv) != 1:
+        url = __import__('sys').argv[1]
+
     with urllib.request.\
-            urlopen('https://alx-intranet.hbtn.io/status') as response:
+            urlopen(url) as response:
         response_read = response.read()
         print("Body response:")
         print("\t- type:", type(response_read))
