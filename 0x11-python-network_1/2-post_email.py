@@ -12,11 +12,13 @@ def main():
     of the response (decoded in utf-8)'''
     url = argv[1]
     email = argv[2]
-    data = parse.urlencode({'email': email})
-    data.encode('utf-8')
+    value = {'email' : email}
 
-    with request.urlopen(request.Request(url, data)) as response:
-        print(response.read())
+    data = parse.urlencode(value)
+    data = data.encode('utf-8') # data should be bytes
+    req = request.Request(url, data)
+    with request.urlopen(req) as response:
+       print(response.read())
 
 
 if __name__ == '__main__':
