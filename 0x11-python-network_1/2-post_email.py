@@ -18,7 +18,7 @@ def main():
     data = data.encode('utf-8') # data should be bytes
     req = request.Request(url, data)
     with request.urlopen(req) as response:
-       print(response.read())
+       print(parse.urldecode(response.read()))
 
 
 if __name__ == '__main__':
