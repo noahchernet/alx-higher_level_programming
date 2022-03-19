@@ -11,7 +11,8 @@ def main():
     Details about the http response
     are printed.
     '''
-    with urllib.request.urlopen('https://alx-intranet.hbtn.io/status') as response:
+    with urllib.request.\
+            urlopen('https://alx-intranet.hbtn.io/status') as response:
         response_read = response.read()
         print("Body response:")
         print("\t- type:", type(response_read))
