@@ -15,7 +15,7 @@ def main():
     data = parse.urlencode({'email': email})
     data.encode('utf-8')
 
-    with request.Request(url, data) as response:
+    with request.urlopen(request.Request(url, data)) as response:
         print(response.read())
 
 
