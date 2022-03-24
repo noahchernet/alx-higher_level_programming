@@ -21,7 +21,7 @@ def main():
         print("Body response:")
         print("\t- type:", type(response_read))
         print("\t- content:", response_read)
-        print("\t- utf8 content:", response.msg)
+        print("\t- utf8 content:", str(response_read)[2:-1])
 
 
 if __name__ == '__main__':
